@@ -216,3 +216,4 @@ ClientBin/
 *~
 *.dbmdl
 lib/
+output/
