@@ -38,6 +38,15 @@ function Add-SinkElasticsearch {
 		Tested and works with ElasticSearch 7.x
 		When using the AutoRegisterTemplate feature, this allows you to set index aliases.
 		If not provided, index aliases will be blank.
+	.PARAMETER IndexFormat
+		The index name formatter. A string.Format using the DateTimeOffset of the event is run over this string.
+		defaults to "logstash-{0:yyyy.MM.dd}"
+		Needs to be lowercased.
+	.PARAMETER DeadLetterIndexName
+		Optionally set this value to the name of the index that should be used when the template cannot be written to ES.
+		defaults to "deadletter-{0:yyyy.MM.dd}"
+	.PARAMETER TypeName
+		The default elasticsearch type name to use for the log events. Defaults to: logevent.
 	.INPUTS
 		Instance of LoggerConfiguration
 	.OUTPUTS
@@ -88,7 +97,11 @@ function Add-SinkElasticsearch {
 		[Nullable[int]]$NumberOfReplicas,
 
 		[Parameter(ParameterSetName = 'AutoRegisterTemplate')]
-		[string[]]$IndexAliases
+		[string[]]$IndexAliases,
+
+		[string]$IndexFormat = 'logstash-{0:yyyy.MM.dd}',
+		[string]$DeadLetterIndexName = 'deadletter-{0:yyyy.MM.dd}',
+		[string]$TypeName = 'logevent'
 	)
 
 	$sinkOptions = [Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions]::new($Uri)
@@ -103,6 +116,10 @@ function Add-SinkElasticsearch {
 	$sinkOptions.NumberOfShards = $NumberOfShards
 	$sinkOptions.NumberOfReplicas = $NumberOfReplicas
 	$sinkOptions.IndexAliases = $IndexAliases
+
+	$sinkOptions.IndexFormat = $IndexFormat
+	$sinkOptions.DeadLetterIndexName = $DeadLetterIndexName,
+	$sinkOptions.TypeName = $TypeName
 
 	[Serilog.LoggerConfigurationElasticsearchExtensions]::Elasticsearch($LoggerConfig.WriteTo, $sinkOptions);
 }
