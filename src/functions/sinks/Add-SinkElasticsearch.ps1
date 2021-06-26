@@ -1,32 +1,40 @@
 function Add-SinkElasticsearch {
 	<#
 	.SYNOPSIS
-		Writes log events into seq
+		Writes log events into Elasticsearch
 	.DESCRIPTION
-		Writes log events into seq server
+		Writes log events into Elasticsearch
 	.PARAMETER LoggerConfig
 		Instance of LoggerConfiguration
-	.PARAMETER TODOParamName
-		TODO ParamDescription
+	.PARAMETER AutoRegisterTemplate
+		When set to $true the sink will register an index template for the logs in elasticsearch.
+		This template is optimized to deal with serilog events
+	.PARAMETER AutoRegisterTemplateVersion
+		When using the AutoRegisterTemplate feature, this allows to set the Elasticsearch version. Depending on the
+		version, a template will be selected. Defaults to pre 5.0.
 	.INPUTS
 		Instance of LoggerConfiguration
 	.OUTPUTS
 		LoggerConfiguration object allowing method chaining
 	.EXAMPLE
-		PS> New-Logger | Add-SinkElasticsearch TODO FILL_HERE | Start-Logger
+		PS> New-Logger | Add-SinkElasticsearch -Uri 'http://elasticsearch:9200 | Start-Logger
 	#>
 
 	[Cmdletbinding()]
 	param(
-		[Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+		[Parameter(Mandatory, ValueFromPipeline)]
 		[Serilog.LoggerConfiguration]$LoggerConfig,
 
-		[Parameter(Mandatory = $true)]
-		[string]$TODOParamName
+		[Parameter(Mandatory)]
+		[Uri[]]$Uri,
+
+		[bool]$AutoRegisterTemplate = $false,
+		[Serilog.Sinks.Elasticsearch.AutoRegisterTemplateVersion]$AutoRegisterTemplateVersion
 	)
 
-	# CALL C# method here
-	# Example: $LoggerConfig = [Serilog.SeqLoggerConfigurationExtensions]::Seq($LoggerConfig.WriteTo, ...)
+	$sinkOptions = [Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions]::new($Uri)
+	$sinkOptions.AutoRegisterTemplate = $AutoRegisterTemplate
+	$sinkOptions.AutoRegisterTemplateVersion = $AutoRegisterTemplateVersion
 
-	$LoggerConfig
+	[Serilog.LoggerConfigurationElasticsearchExtensions]::Elasticsearch($LoggerConfig.WriteTo, $sinkOptions);
 }
