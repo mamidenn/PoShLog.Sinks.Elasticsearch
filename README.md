@@ -1,8 +1,8 @@
 # PoShLog.Sinks.Elasticsearch
 
-[![psgallery](https://img.shields.io/powershellgallery/v/poshlog.sinks.Elasticsearch.svg)](https://www.powershellgallery.com/packages/PoShLog.Sinks.Elasticsearch) [![PowerShell Gallery](htps://imgshields.io/powershellgallery/p/poshlog.sinks.Elasticsearch?color=blue)](https://www.powershellgallery.com/packages/PoShLog.Sinks.Elasticsearch) [![psgallery](https://img.shields.io/powershllgallerydt/PoShLog.Sinks.Elasticsearch.svg)](https://www.powershellgallery.com/packages/PoShLog.Sinks.Elasticsearch) [![Discord](https://img.shields.io/discord/693754316305072199?color=orange&labe=discord)(https://discord.gg/gGFtbf)
+[![psgallery](https://img.shields.io/powershellgallery/v/poshlog.sinks.Elasticsearch.svg)](https://www.powershellgallery.com/packages/PoShLog.Sinks.Elasticsearch) [![PowerShell Gallery](htps://imgshields.io/powershellgallery/p/poshlog.sinks.Elasticsearch?color=blue)](https://www.powershellgallery.com/packages/PoShLog.Sinks.Elasticsearch) [![psgallery](https://img.shields.io/powershllgallerydt/PoShLog.Sinks.Elasticsearch.svg)](https://www.powershellgallery.com/packages/PoShLog.Sinks.Elasticsearch) [![Discord](https://img.shields.io/discord/693754316305072199?color=orange&labe=discord)](https://discord.gg/gGFtbf)
 
-PoShLog.Sinks.Elasticsearch is extension module for [PoShLog](https://github.com/PoShLog/PoShLog) logging module. Contains sink that publishes log messages to *ILL_HERE*
+PoShLog.Sinks.Elasticsearch is extension module for [PoShLog](https://github.com/PoShLog/PoShLog) logging module. Contains sink that publishes log messages to Elasticsearch.
 
 ## Getting started
 
@@ -10,7 +10,7 @@ If you are familiar with PowerShell, skip to [Installation](#installation) secti
 
 ### Installation
 
-To install PoShLog.Sinks.Elasticsearch, run following snippet from owershell
+To install PoShLog.Sinks.Elasticsearch, run the following snippet from Powershell:
 
 ```ps1
 Install-Module -Name PoShLog.Sinks.Elasticsearch
