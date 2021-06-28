@@ -99,6 +99,7 @@ function Add-SinkElasticsearch {
 		[Parameter(ParameterSetName = 'AutoRegisterTemplate')]
 		[string[]]$IndexAliases,
 
+		[Func[Elasticsearch.Net.ConnectionConfiguration, Elasticsearch.Net.ConnectionConfiguration]]$ModifyConnectionSettings,
 		[string]$IndexFormat = 'logstash-{0:yyyy.MM.dd}',
 		[string]$DeadLetterIndexName = 'deadletter-{0:yyyy.MM.dd}',
 		[string]$TypeName = 'logevent'
@@ -117,6 +118,7 @@ function Add-SinkElasticsearch {
 	$sinkOptions.NumberOfReplicas = $NumberOfReplicas
 	$sinkOptions.IndexAliases = $IndexAliases
 
+	$sinkOptions.ModifyConnectionSettings = $ModifyConnectionSettings
 	$sinkOptions.IndexFormat = $IndexFormat
 	$sinkOptions.DeadLetterIndexName = $DeadLetterIndexName,
 	$sinkOptions.TypeName = $TypeName
