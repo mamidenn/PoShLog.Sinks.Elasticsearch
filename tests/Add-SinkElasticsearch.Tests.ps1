@@ -8,7 +8,12 @@ Describe 'Add-SinkElasticsearch' {
                 -Uri 'http://elasticsearch:9200' `
                 -AutoRegisterTemplate `
                 -AutoRegisterTemplateVersion ESv7 `
-                -IndexFormat 'pester' |
+                -IndexFormat 'pester' `
+                -ModifyConnectionSettings { # TODO does not work as expected (still seems to check cert)
+                param($config) 
+                $config.psobject.Methods['ServerCertificateValidationCallback'].Invoke( 
+                    { param($o, $cert, $chain, $errors) 
+                        $true }) } |
             Start-Logger
 
         $guid = New-Guid
