@@ -110,10 +110,10 @@ For documentation check the PoShLog wiki - https://github.com/PoShLog/PoShLog/wi
             IconUri = 'https://raw.githubusercontent.com/PoShLog/PoShLog/master/images/icons/poshlog-icon-sink-256.png'
 
             # ReleaseNotes of this module
-            ReleaseNotes = 'https://github.com/mamidenn/PoShLog.Sinks.Elasticsearch/blob/master/releaseNotes/v1.0.0.md'
+            ReleaseNotes = 'https://github.com/mamidenn/PoShLog.Sinks.Elasticsearch/releases/tag/1.0.0-alpha3'
 
             # Prerelease string of this module
-            Prerelease = 'alpha2'
+            Prerelease = 'alpha3'
 
             # Flag to indicate whether the module requires explicit user acceptance for install/update/save
             # RequireLicenseAcceptance = $false
