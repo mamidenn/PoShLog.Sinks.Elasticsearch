@@ -16,7 +16,7 @@ Describe 'Add-SinkElasticsearch' {
         Write-InformationLog '{level} message for test {guid}' -PropertyValues 'Information', $guid
 
         Close-Logger
-        Start-Sleep 3 # ouchi!
+        Start-Sleep 5 # ouchi!
 
         $response = Invoke-WebRequest -SkipCertificateCheck -Uri "https://elasticsearch:9200/pester/_search?q=fields.guid:'$guid'"
         ($response.Content | ConvertFrom-Json).hits.total.value | Should -Be 1
