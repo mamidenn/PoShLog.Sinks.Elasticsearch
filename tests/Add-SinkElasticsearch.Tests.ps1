@@ -1,5 +1,5 @@
 BeforeAll {
-    Import-Module $PSScriptRoot/../dist/PoShLog.Sinks.Elasticsearch.psd1 -Force
+    Import-Module $PSScriptRoot/../dist/PoShLog.Sinks.Elasticsearch -Force
 }
 Describe 'Add-SinkElasticsearch' {
     It 'Adds an elasticsearch sink, that can be successfully written to' {
