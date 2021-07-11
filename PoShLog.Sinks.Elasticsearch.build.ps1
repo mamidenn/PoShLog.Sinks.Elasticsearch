@@ -10,9 +10,24 @@ task Build {
 	Copy-Item ./src/PoShLog.Sinks.Elasticsearch.psd1 ./dist
 }
 
-task PublishModule {
+task PublishPreCheck {
+	exec { git diff-index --quiet HEAD }
+	$branch = git rev-parse --abbrev-ref HEAD
+	if ($branch -ne 'master') {
+		throw 'I will only publish from master.'
+	}
+}
+
+task Publish PublishPreCheck, Test, {
+	$manifest = Test-ModuleManifest ./dist/PoShLog.Sinks.Elasticsearch.psd1
+	$version = "$($manifest.Version)"
+	if ($manifest.PrivateData.PSData.Prerelease) {
+		$version += "-$($manifest.PrivateData.PSData.Prerelease)"
+	}
+	exec { git tag $version }
+	exec { git push --tags }
 	$params = @{
-		Path = ./dist 
+		Path = './dist' 
 		NuGetApiKey = $env:psgalleryapikey
 		ErrorAction = 'Stop'
 	}
