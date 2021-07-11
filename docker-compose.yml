@@ -1,8 +1,4 @@
 services:
-    poshlog:
-        image: mcr.microsoft.com/powershell:lts-debian-10
-        links:
-            - elasticsearch
     kibana:
         image: docker.elastic.co/kibana/kibana:7.13.2
         ports:
