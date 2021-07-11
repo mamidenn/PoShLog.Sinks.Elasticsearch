@@ -27,13 +27,13 @@
     CompanyName = 'Martin Dennhardt'
 
     # Copyright statement for this module
-    Copyright = '(c) 2019 Martin Dennhardt. All rights reserved.'
+    Copyright = '(c) 2021 Martin Dennhardt. All rights reserved.'
 
     # Description of the functionality provided by this module
-    Description = 'PoShLog.Sinks.Elasticsearch is extension module for PoShLog core library - https://www.powershellgallery.com/packages/PoShLog.
-It contains sink that publishes log messages to TODO
+    Description = 'PoShLog.Sinks.Elasticsearch is extension module for the PoShLog core library - https://www.powershellgallery.com/packages/PoShLog.
+It contains a sink that publishes log messages to Elasticsearch.
 
-For documentation check PoShLog wiki - https://github.com/PoShLog/PoShLog/wiki'
+For documentation check the PoShLog wiki - https://github.com/PoShLog/PoShLog/wiki'
 
     # Minimum version of the PowerShell engine required by this module
     PowerShellVersion = '5.1'
