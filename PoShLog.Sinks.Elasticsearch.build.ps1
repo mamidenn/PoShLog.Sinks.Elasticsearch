@@ -1,6 +1,12 @@
+param (
+	[ValidateSet('Debug', 'Release')]
+	$Configuration = 'Debug'
+)
+
 $moduleName = 'PoShLog.Sinks.Elasticsearch'
 
 task Test Build, {
+	exec { dotnet test --nologo --no-build -v n -c $Configuration ./PoShLog.Sinks.Elasticsearch.sln }
 	$result = Invoke-Pester ./tests -PassThru
 	if ($result.FailedCount -gt 0) {
 		throw 'Pester tests failed'
@@ -8,7 +14,8 @@ task Test Build, {
 }
 
 task Build {
-	exec { dotnet publish --nologo -v n -c Release -o ./dist/$moduleName/lib ./src/PoShLog.Sinks.Elasticsearch }
+	exec { dotnet build --nologo -v n -c $Configuration ./PoShLog.Sinks.Elasticsearch.sln }
+	exec { dotnet publish --nologo --no-build -v n -c $Configuration -o ./dist/$moduleName/lib ./src/PoShLog.Sinks.Elasticsearch }
 	Copy-Item ./src/PoShLog.Sinks.Elasticsearch.psd1 ./dist/$moduleName
 }
 
@@ -34,7 +41,7 @@ task Publish PublishPreCheck, Test, {
 		ErrorAction = 'Stop'
 	}
 	Publish-Module @params
-}
+} -If ($Configuration -eq 'Release')
 
 task Clean {
 	remove dist
