@@ -13,7 +13,7 @@
                     ]
                 }
             },
-            "command": "Invoke-Build -File ${workspaceFolder}/src/PoShLog.Sinks.Elasticsearch.Build.ps1",
+            "command": "Invoke-Build",
             "problemMatcher": [
                 "$pester"
             ],

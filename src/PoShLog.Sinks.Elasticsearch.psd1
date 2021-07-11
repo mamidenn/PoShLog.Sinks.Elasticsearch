@@ -9,7 +9,7 @@
 @{
 
     # Script module or binary module file associated with this manifest.
-    RootModule = 'PoShLog.Sinks.Elasticsearch/bin/Release/netstandard2.0/publish/PoShLog.Sinks.Elasticsearch.dll'
+    RootModule = 'lib/PoShLog.Sinks.Elasticsearch.dll'
 
     # Version number of this module.
     ModuleVersion = '1.0.0'
