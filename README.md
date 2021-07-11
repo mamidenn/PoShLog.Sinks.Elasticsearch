@@ -33,6 +33,8 @@ New-Logger |
     Add-SinkConsole |
     Start-Logger
 
+Write-InformationLog "Hello {entity}!" -PropertyValues "World"
+
 # Don't forget to close the logger
 Close-Logger
 ```
