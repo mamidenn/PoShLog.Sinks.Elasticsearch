@@ -23,22 +23,15 @@ namespace PoShLog.Sinks.Elasticsearch
         [Parameter()] public string IndexFormat { get; set; }
         [Parameter()] public SwitchParameter SkipServerCertificateCheck { get; set; }
 
-        // [Parameter(
-        //     Position = 1,
-        //     ValueFromPipelineByPropertyName = true)]
-        // [ValidateSet("Cat", "Dog", "Horse")]
-        // public string FavoritePet { get; set; } = "Dog";
-
-
         protected override void EndProcessing()
         {
             var sinkoptions = new ElasticsearchSinkOptions(Uri)
             {
-                AutoRegisterTemplate = AutoRegisterTemplate.IsPresent,
+                AutoRegisterTemplate = AutoRegisterTemplate,
                 AutoRegisterTemplateVersion = AutoRegisterTemplateVersion,
                 IndexFormat = IndexFormat
             };
-            if (SkipServerCertificateCheck.IsPresent)
+            if (SkipServerCertificateCheck)
             {
                 sinkoptions.ModifyConnectionSettings = config =>
                     config.ServerCertificateValidationCallback((o, cert, chain, errors) => true);
