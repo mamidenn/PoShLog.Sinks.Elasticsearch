@@ -113,7 +113,7 @@ PrivateData = @{
         ReleaseNotes = 'https://github.com/mamidenn/PoShLog.Sinks.Elasticsearch/blob/master/releaseNotes/v1.0.0.md'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'alpha1'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
