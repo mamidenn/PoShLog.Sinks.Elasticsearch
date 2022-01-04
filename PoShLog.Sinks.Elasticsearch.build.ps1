@@ -27,7 +27,7 @@ task PublishPreCheck {
 	}
 }
 
-task Publish PublishPreCheck, Test, {
+task Publish PublishPreCheck, {
 	$manifest = Test-ModuleManifest ./dist/$moduleName/$moduleName.psd1
 	$version = "$($manifest.Version)"
 	if ($manifest.PrivateData.PSData.Prerelease) {
