@@ -29,7 +29,8 @@ New-Logger |
     Add-SinkElasticsearch `
         -Uri 'http://elasticsearch:9200' `
         -AutoRegisterTemplate `
-        -AutoRegisterTemplateVersion ESv7 |
+        -AutoRegisterTemplateVersion ESv7 `
+        -IndexFormat 'logstash' |
     Add-SinkConsole |
     Start-Logger
 
