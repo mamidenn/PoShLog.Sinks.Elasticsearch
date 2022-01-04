@@ -15,7 +15,7 @@ task Test Build, {
 
 task Build {
 	exec { dotnet build --nologo -v n -c $Configuration ./PoShLog.Sinks.Elasticsearch.sln }
-	exec { dotnet publish --nologo --no-build -v n -c $Configuration -o ./dist/$moduleName/lib ./src/PoShLog.Sinks.Elasticsearch }
+	exec { dotnet publish --nologo --no-build -v n -c $Configuration -p:TargetFramework=net461 -o ./dist/$moduleName/lib ./src/PoShLog.Sinks.Elasticsearch }
 	Copy-Item ./src/PoShLog.Sinks.Elasticsearch.psd1 ./dist/$moduleName
 }
 
@@ -36,7 +36,7 @@ task Publish PublishPreCheck, Test, {
 	exec { git tag $version }
 	exec { git push --tags }
 	$params = @{
-		Path = "./dist/$moduleName" 
+		Path = "./dist/$moduleName"
 		NuGetApiKey = $env:psgalleryapikey
 		ErrorAction = 'Stop'
 	}

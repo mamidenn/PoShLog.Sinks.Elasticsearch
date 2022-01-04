@@ -3,6 +3,7 @@ BeforeAll {
 }
 Describe 'Add-SinkElasticsearch' {
     It 'Adds an elasticsearch sink, that can be successfully written to' {
+        [Serilog.Debugging.SelfLog]::Enable([System.Console]::Error)
         New-Logger |
             Add-SinkElasticsearch `
                 -Uri 'https://elasticsearch:9200' `

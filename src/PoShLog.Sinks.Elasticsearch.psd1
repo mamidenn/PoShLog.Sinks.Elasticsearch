@@ -15,7 +15,7 @@
     ModuleVersion = '1.0.0'
 
     # Supported PSEditions
-    CompatiblePSEditions = 'Desktop', 'Core'
+    CompatiblePSEditions = 'Desktop'
 
     # ID used to uniquely identify this module
     GUID = '79830926-af62-4c1d-9b9a-4c874f1dbd97'
@@ -30,7 +30,7 @@
     Copyright = '(c) 2021 Martin Dennhardt. All rights reserved.'
 
     # Description of the functionality provided by this module
-    Description = 'PoShLog.Sinks.Elasticsearch is extension module for the PoShLog core library - https://www.powershellgallery.com/packages/PoShLog.
+    Description = 'PoShLog.Sinks.Elasticsearch is an extension module for PoShLog - https://www.powershellgallery.com/packages/PoShLog.
 It contains a sink that publishes log messages to Elasticsearch.
 
 For documentation check the PoShLog wiki - https://github.com/PoShLog/PoShLog/wiki'
@@ -72,13 +72,13 @@ For documentation check the PoShLog wiki - https://github.com/PoShLog/PoShLog/wi
     # NestedModules = @()
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport = 'Add-SinkElasticsearch'
+    FunctionsToExport = @()
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    CmdletsToExport = '*'
+    CmdletsToExport = @('Add-SinkElasticsearch')
 
     # Variables to export from this module
-    VariablesToExport = '*'
+    VariablesToExport = @()
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
     AliasesToExport = @()
@@ -98,7 +98,7 @@ For documentation check the PoShLog wiki - https://github.com/PoShLog/PoShLog/wi
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags = 'Log', 'Logging', 'Serilog', 'File', 'filelog', 'logfile', 'error-log', 'console', 'event', 'serilog-sink', 'serilog-for-powershell', 'wrapper', 'sinks', 'PSEdition_Desktop', 'PSEdition_Core', 'Windows', 'Linux', 'MacOS'
+            Tags = 'Log', 'Logging', 'Serilog', 'error-log', 'serilog-sink', 'serilog-for-powershell', 'wrapper', 'sinks', 'PSEdition_Desktop', 'Windows'
 
             # A URL to the license for this module.
             LicenseUri = 'https://github.com/mamidenn/PoShLog.Sinks.Elasticsearch/blob/master/LICENSE'
@@ -110,10 +110,10 @@ For documentation check the PoShLog wiki - https://github.com/PoShLog/PoShLog/wi
             IconUri = 'https://raw.githubusercontent.com/PoShLog/PoShLog/master/images/icons/poshlog-icon-sink-256.png'
 
             # ReleaseNotes of this module
-            ReleaseNotes = 'https://github.com/mamidenn/PoShLog.Sinks.Elasticsearch/releases/tag/1.0.0-alpha3'
+            ReleaseNotes = 'https://github.com/mamidenn/PoShLog.Sinks.Elasticsearch/releases/tag/1.0.0-alpha5'
 
             # Prerelease string of this module
-            Prerelease = 'alpha4'
+            Prerelease = 'alpha5'
 
             # Flag to indicate whether the module requires explicit user acceptance for install/update/save
             # RequireLicenseAcceptance = $false
